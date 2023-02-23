@@ -1,6 +1,7 @@
 #include "main.h"
 /**
- * main - print -putchar
+ * main - a programme that print _putchar
+ *
  * is written by dean
  * Return 0 (succes)
  */
