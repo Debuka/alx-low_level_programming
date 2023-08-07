@@ -3,26 +3,28 @@
 #include <stdlib.h>
 
 /**
- * _putchar - writes the character c to stdout
- * @c: The character to print
+ * minCoins - calculates the minimum number of coins required to make change
+ * @cents: The amount of cents to make change for
  *
- * Return: On success 1, else -1.
+ * Return: The minimum number of coins
  */
-int _putchar(char c)
+int minCoins(int cents)
 {
-	return write(1, &c, 1);
-}
+	if (cents < 0)
+		return 0;
 
-/**
- * multiply - multiplies two numbers
- * @a: The first number
- * @b: The second number
- *
- * Return: The result of the multiplication
- */
-int multiply(int a, int b)
-{
-	return a * b;
+	int coins[] = {25, 10, 5, 2, 1};
+	int numCoins = 0;
+	int i = 0;
+
+	while (cents > 0)
+	{
+		numCoins += cents / coins[i];
+		cents %= coins[i];
+		i++;
+	}
+
+	return numCoins;
 }
 
 /**
@@ -34,20 +36,16 @@ int multiply(int a, int b)
  */
 int main(int argc, char *argv[])
 {
-	int num1, num2, result;
-
-	if (argc != 3)
+	if (argc != 2)
 	{
 		printf("Error\n");
 		return 1;
 	}
 
-	num1 = atoi(argv[1]);
-	num2 = atoi(argv[2]);
+	int cents = atoi(argv[1]);
+	int result = minCoins(cents);
 
-	result = multiply(num1, num2);
 	printf("%d\n", result);
 
 	return 0;
 }
-
