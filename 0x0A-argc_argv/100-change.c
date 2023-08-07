@@ -3,41 +3,37 @@
 #include "main.h"
 
 /**
- * main - Prints the minimum number of coins to 
- * make change for an amount of money.
- * @argc: Number of arguments
- * @argv: Array of arguments
+ * main - prints the minum coins required to make a change.
  *
- * Return: 0 (Success), 1 (Error)
+ * @argc: the num of args to programe.
+ * @argv: array of args.
+ * Return: 1 on syccess, 0 on error.
  */
+
 int main(int argc, char *argv[])
 {
-	int amount, index, coin_count;
+	int kobo, i, naira;
 	int coins[] = {25, 10, 5, 2, 1};
 
 	if (argc != 2)
 	{
-		printf("Error\n");
+		printf("Error: Please provide a single integer argument.\n");
 		return (1);
 	}
-
-	amount = atoi(argv[1]);
-	coin_count = 0;
-
-	if (amount < 0)
+	kobo = atoi(argv[1]);
+	naira = 0;
+	if (kobo < 0)
 	{
-		printf("0\n");
+		printf("0\n")
 		return (0);
 	}
-	for (index = 0; index < 5 && amount >= 0; index++)
-	{
-		while (amount >= coins[index])
+	for (i = 0; i < 5 && kobo >= 0; i++)
+		while (kobo >= coins[i])
 		{
-			coin_count++;
-			amount -= coins[index];
+			naira++;
+			kobo -= coins[i];
 		}
-	}
-
-	printf("%d\n", coin_count);
-	return (0);
+}
+printf("%d\n", naira);
+return (0);
 }
