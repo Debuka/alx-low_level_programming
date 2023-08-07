@@ -1,39 +1,53 @@
+#include "main.h"
 #include <stdio.h>
 #include <stdlib.h>
-#include "main.h"
 
 /**
- * main - prints the minum coins required to make a change.
+ * _putchar - writes the character c to stdout
+ * @c: The character to print
  *
- * @argc: the num of args to programe.
- * @argv: array of args.
- * Return: 1 on syccess, 0 on error.
+ * Return: On success 1, else -1.
  */
+int _putchar(char c)
+{
+	return write(1, &c, 1);
+}
 
+/**
+ * multiply - multiplies two numbers
+ * @a: The first number
+ * @b: The second number
+ *
+ * Return: The result of the multiplication
+ */
+int multiply(int a, int b)
+{
+	return a * b;
+}
+
+/**
+ * main - Entry point of the program
+ * @argc: The number of command line arguments
+ * @argv: An array of command line argument strings
+ *
+ * Return: 0 on success, 1 on error
+ */
 int main(int argc, char *argv[])
 {
-	int kobo, i, naira;
-	int coins[] = {25, 10, 5, 2, 1};
+	int num1, num2, result;
 
-	if (argc != 2)
+	if (argc != 3)
 	{
-		printf("Error: Please provide a single integer argument.\n");
-		return (1);
+		printf("Error\n");
+		return 1;
 	}
-	kobo = atoi(argv[1]);
-	naira = 0;
-	if (kobo < 0)
-	{
-		printf("0\n")
-		return (0);
-	}
-	for (i = 0; i < 5 && kobo >= 0; i++)
-		while (kobo >= coins[i])
-		{
-			naira++;
-			kobo -= coins[i];
-		}
+
+	num1 = atoi(argv[1]);
+	num2 = atoi(argv[2]);
+
+	result = multiply(num1, num2);
+	printf("%d\n", result);
+
+	return 0;
 }
-printf("%d\n", naira);
-return (0);
-}
+
