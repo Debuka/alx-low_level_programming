@@ -1,6 +1,6 @@
 /**
  * _memset - Fill a block of memory with a specified value.
- * @sA pointer to the address of memory to be filled.
+ * @s: pointer to the address of memory to be filled.
  * @b: The desired value to be set.
  * @n: Number of bytes to be changed.
  *

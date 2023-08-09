@@ -3,7 +3,8 @@
 #include <stdlib.h>
 
 /**
- * minCoins - calculates the minimum number of coins required to make change
+ * minCoins Checks the minimum
+ * number of coins require for change making.
  * @cents: The amount of cents to make change for
  *
  * Return: The minimum number of coins
