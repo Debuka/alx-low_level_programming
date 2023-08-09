@@ -2,42 +2,39 @@
 #include <stdlib.h>
 
 /**
- * argstostr - Concatenates command-line arguments into a single string.
+ * argstostr - Concatenates command-line arg into a string.
  * @ac: Number of command-line arguments.
  * @av: Array of command-line argument strings.
  *
- * Return: Pointer to the concatenated string, or NULL on failure or invalid inputs.
+ * Return: Pointer to the result, or NULL if it fails.
  */
 char *argstostr(int ac, char **av)
 {
-    int it, a, z = 0, k = 0;
-    char *str;
+	int j, n, z = 0, length = 0;
+	char *str;
 
-    if (ac == 0 || av == NULL)
-        return (NULL);
-
-    for (it = 0; it < ac; it++)
-    {
-        for (a = 0; av[it][a]; a++)
-            k++;
-    }
-    k += ac; // To account for the newlines
-
-    str = malloc(sizeof(char) * (k + 1)); // +1 for the null-terminator
-    if (str == NULL)
-        return (NULL);
-
-    for (it = 0; it < ac; it++)
-    {
-        for (a = 0; av[it][a]; a++)
-        {
-            str[z] = av[it][a];
-            z++;
-        }
-        if (str[z] == '\0')
-        {
-            str[z++] = '\n';
-        }
-    }
-    return (str);
+	if (ac == 0 || av == NULL)
+		return (NULL);
+	for (j = 0; j < ac; j++)
+	{
+		for (n = 0; av[j][n]; n++)
+			length++;
+	}
+	length += ac;
+	str = malloc(sizeof(char) * (length + 1));
+	if (str == NULL)
+		return (NULL);
+	for (j = 0; j < ac; j++)
+	{
+		for (n = 0; av[j][n]; n++)
+		{
+			str[z] = av[j][n];
+			z++;
+		}
+		if (str[z] == '\0')
+		{
+			str[z++] = '\n';
+		}
+	}
+	return (str);
 }

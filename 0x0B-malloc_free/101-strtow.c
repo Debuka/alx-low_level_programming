@@ -9,23 +9,20 @@
  */
 int count_word(char *s)
 {
-    int flag, q, z;
-
-    flag = 0;
-    z = 0;
-
-    for (q = 0; s[q] != '\0'; q++)
+	int flag, q, z;
+	flag = 0;
+	z = 0;
+	for (q = 0; s[q] != '\0'; q++)
     {
-        if (s[q] == ' ')
-            flag = 0;
-        else if (flag == 0)
+	    if (s[q] == ' ')
+		    flag = 0;
+	    else if (flag == 0)
         {
-            flag = 1;
-            z++;
+		flag = 1;
+		z++;
         }
     }
-
-    return (z);
+	return (z);
 }
 
 /**
