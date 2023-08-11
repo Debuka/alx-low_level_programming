@@ -1,27 +1,47 @@
-#include"main.h"
+#include "main.h"
 #include <stdlib.h>
-#include <string.h>
 
 /**
- * _calloc - Allocates memory for an array, initialized to 0
- * @nmemb: Number of elements
- * @size: Size of each element
+ * *_memset - function thst fills memory with a constant bytes.
+ * @s: memory location that will be filled
+ * @b: character  to copy.
+ * @n: number of times to copy b.
  *
- * Return: Pointer to allocated memory, or NULL on failure or if nmemb/size is 0
+ * Return: pointer to the address of the memory area s.
  */
-void *_calloc(unsigned int nmemb, unsigned int size) {
-    void *ptr;
+char *_memset(char *s, char b, unsigned int n)
+{
+	unsigned int j;
 
-    if (nmemb == 0 || size == 0)
-        return NULL;
+	for (j = 0; j < n; j++)
+	{
+		s[j] = b;
+	}
 
-    ptr = malloc(nmemb * size);
+	return (s);
+}
 
-    if (ptr == NULL)
-        return NULL;
+/**
+ * *_calloc - allocates memory for an array nd returns
+ * a pointer to the memory address.
+ * @nmemb: Elements in the array
+ * @size: size of the elements
+ *
+ * Return: pointer to allocated memory
+ */
+void *_calloc(unsigned int nmemb, unsigned int size)
+{
+	char *ptr;
 
-    // Use memset to efficiently clear the allocated memory
-    memset(ptr, 0, nmemb * size);
+	if (nmemb == 0 || size == 0)
+		return (NULL);
 
-    return ptr;
+	ptr = malloc(size * nmemb);
+
+	if (ptr == NULL)
+		return (NULL);
+
+	_memset(ptr, 0, nmemb * size);
+
+	return (ptr);
 }
