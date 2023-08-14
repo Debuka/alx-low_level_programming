@@ -1,52 +1,46 @@
+Here is a version of the function that adheres to the requirements you specified:
+
+```c
 #include <stdlib.h>
-#include "main.h"
 
 /**
- * *_realloc - function that reallocates
- * a memory block using malloc and free.
- *
- * @ptr: pointer to the previsouly allocatedmemory..
- * @old_size: size of the allocated memory for ptr
- * @new_size: new size of the new memory block
+ * _realloc - reallocates a memory block using malloc and free
+ * @ptr: pointer to the memory previously allocated with a call to malloc
+ * @old_size: size, in bytes, of the allocated space for ptr
+ * @new_size: new size, in bytes of the new memory block
  *
  * Return: pointer to the newly allocated memory block
  */
 void *_realloc(void *ptr, unsigned int old_size, unsigned int new_size)
 {
-	char *nwptr;
-	char *fm_ptr;
-	unsigned int i;
+    void *new_ptr;
+    char *p;
+    char *np;
+    unsigned int i;
 
-	if (new_size == old_size)
-		return (ptr);
+    if (new_size == old_size)
+        return (ptr);
 
-	if (new_size == 0 && ptr)
-	{
-		free(ptr);
-		return (NULL);
-	}
+    if (ptr == NULL)
+        return (malloc(new_size));
 
-	if (!ptr)
-		return (malloc(new_size));
+    if (new_size == 0 && ptr != NULL)
+    {
+        free(ptr);
+        return (NULL);
+    }
 
-	nwptr = malloc(new_size);
-	if (!ptr1)
-		return (NULL);
+    new_ptr = malloc(new_size);
+    if (new_ptr == NULL)
+        return (NULL);
 
-	fm_ptr = ptr;
+    p = ptr;
+    np = new_ptr;
 
-	if (new_size < old_size)
-	{
-		for (i = 0; i < new_size; i++)
-			nwptr[i] = fm_ptr[i];
-	}
+    for (i = 0; i < old_size && i < new_size; i++)
+        np[i] = p[i];
 
-	if (new_size > old_size)
-	{
-		for (i = 0; i < old_size; i++)
-			nwptr[i] = fm_ptr[i];
-	}
+    free(ptr);
 
-	free(ptr);
-	return (nwptr);
+    return (new_ptr);
 }
