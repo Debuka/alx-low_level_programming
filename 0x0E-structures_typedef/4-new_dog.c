@@ -47,30 +47,5 @@ dog_t *new_dog(char *name, float age, char *owner)
     strcpy(new_dog->owner, owner);
 
     new_dog->age = age;
-
-    return new_dog;
-}
-
-int main(void)
-{
-    char name[] = "Buddy";
-    char owner[] = "John";
-    float age = 3.5;
-
-    dog_t *my_dog = new_dog(name, age, owner);
-
-    if (my_dog != NULL) {
-        printf("New dog created:\n");
-        printf("Name: %s\n", my_dog->name);
-        printf("Age: %.2f\n", my_dog->age);
-        printf("Owner: %s\n", my_dog->owner);
-
-        free(my_dog->name);
-        free(my_dog->owner);
-        free(my_dog);
-    } else {
-        printf("Failed to create a new dog.\n");
-    }
-
-    return 0;
+    return (new dog);
 }
