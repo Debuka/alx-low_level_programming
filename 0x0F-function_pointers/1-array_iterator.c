@@ -2,22 +2,21 @@
 #include <stdio.h>
 
 /**
- * array_iterator - Executes a function
- * on the elements of an array.
- * @array: Pointer to the array.
- * @size: Size of the array.
- * @action: Pointer to the function that will be executed.
- * Return: void.
+ * array_iterator - Applies function to the elements of an array.
+ * @array: The array of integers.
+ * @size: The number of elements in the array.
+ * @action: A pointer to the function to array elements.
+ *
+ * Return: Void.
  */
 void array_iterator(int *array, size_t size, void (*action)(int))
 {
+	unsigned int i;
+	
 	if (array == NULL || action == NULL)
-	{
 		return;
-	}
-	unsigned int  j;
-	for (j = 0; j < size; j++)
+	for (i = 0; i < size; i++)
 	{
-		action(array[j]);
+		action(array[i]);
 	}
 }
