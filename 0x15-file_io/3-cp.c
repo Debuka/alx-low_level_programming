@@ -2,11 +2,11 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-char *fur_buffer(char *file);
-void fur_closing(int fd);
+char *fur_buff(char *file);
+void fur_closing(int file_des);
 
 /**
- * create_buffer - function that
+ * fur_buff - function that
  * allocates 1024 bytes for a buffer.
  * @file: Name of the file for buffer.
  *
@@ -29,8 +29,8 @@ char *fur_buff(char *file)
 }
 
 /**
- * close_file - Function that closes file descriptor
- * @fd: The file descriptor to be closed.
+ * fur_closing - Function that closes file descriptor
+ * @file_des: The file descriptor to be closed.
  */
 void fur_closing(int file_des)
 {
