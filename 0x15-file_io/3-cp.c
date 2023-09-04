@@ -3,7 +3,7 @@
 #include <stdlib.h>
 
 char *fur_buff(char *file);
-void fur_closing(int file_des);
+void fur_closing(int fd);
 
 /**
  * fur_buff - function that
@@ -30,17 +30,17 @@ char *fur_buff(char *file)
 
 /**
  * fur_closing - Function that closes file descriptor
- * @file_des: The file descriptor to be closed.
+ * @fd: The file descriptor to be closed.
  */
-void fur_closing(int file_des)
+void fur_closing(int fd)
 {
 	int q;
 
-	q = close(file_des);
+	q = close(fd);
 
 	if (q == -1)
 	{
-		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", file_des);
+		dprintf(STDERR_FILENO, "Error: Can't close fd %d\n", fd);
 		exit(100);
 	}
 }
@@ -69,9 +69,9 @@ int main(int argc, char *argv[])
 		exit(97);
 	}
 
-	buf_ = create_buffer(argv[2]);
+	buf_ = fur_buff(argv[2]);
 	r_from = open(argv[1], O_RDONLY);
-	rd = read(from, buf_, 1024);
+	rd = read(r_from, buf_, 1024);
 	r_to = open(argv[2], O_CREAT | O_WRONLY | O_TRUNC, 0664);
 
 	do {
@@ -98,8 +98,8 @@ int main(int argc, char *argv[])
 	} while (rd > 0);
 
 	free(buf_);
-	close_file(r_from);
-	close_file(r_to);
+	fur_closing(r_from);
+	fur_closing(r_to);
 
 	return (0);
 }
